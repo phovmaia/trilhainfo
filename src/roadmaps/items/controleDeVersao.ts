@@ -1,3 +1,4 @@
+import { Children } from "react";
 import {
   LinkContentType,
   LinkType,
@@ -88,5 +89,22 @@ export const controleDeVersao: RoadmapItem = {
         { label: "Bitbucket", links: [] },
       ],
     },
+    {
+      label: "Ferramentas de CI/CD",
+      children: [
+        {
+          label: "GitHub Actions",
+          links: [
+            {
+              url: "",
+              label: "",
+              type: LinkType.FREE,
+              votes: 0,
+              contentType: LinkContentType.WATCH,
+            }
+          ]
+        }
+      ]
+    }
   ],
 };
