@@ -24,10 +24,10 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import { useLocalStorage } from "react-use";
 import { Level, LinkContentType, RoadmapItem } from "../../entity/RoadmapModel";
-import LevelItem from "../LevelItem/LevelItem";
+import LevelItem from "../LevelItem";
 import { useLocation } from "react-router-dom";
 import { emojisplosion } from "emojisplosion";
-import Note from "../Note/Note";
+import Note from "../Note";
 import RoadmapButtons from "../RoadmapButtons";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -194,7 +194,7 @@ export default function Roadmap(props: Props) {
       </div>
       <section ref={roadmapRef} className="pb-8">
         <h2
-          className={`text-center font-bold text-3xl c-yellow my-6 txt-title c-dark-brown ${
+          className={`text-center font-bold text-3xl c-yellow my-6 font-title c-dark-brown ${
             props.isPreview ? "hidden" : ""
           }`}
         >
@@ -231,13 +231,13 @@ export default function Roadmap(props: Props) {
               _hover={{ backgroundColor: "#e9dad5" }}
             />
             <DrawerHeader>
-              <span className="text-light-brown txt-title">
+              <span className="text-light-brown font-title">
                 {activeItem?.label}
               </span>
             </DrawerHeader>
 
             <DrawerBody>
-              <p className="mb-4 text-light-brown txt-title">
+              <p className="mb-4 text-light-brown font-title">
                 {activeItem?.description}
               </p>
               <Accordion allowToggle>
@@ -259,7 +259,7 @@ export default function Roadmap(props: Props) {
                                 }}
                               ></Checkbox>
                             </CheckboxGroup>
-                            <span className="text-light-brown txt-title">
+                            <span className="text-light-brown font-title">
                               {child.label}
                             </span>
                           </Box>
@@ -313,7 +313,7 @@ export default function Roadmap(props: Props) {
             <DrawerFooter>
               <div className="flex space-x-4">
                 <a
-                  className="twitter-share-button bg-blue rounded-md text-center font-semibold px-2 py-2 align-middle"
+                  className="twitter-share-button bg-blue hover:bg-dark-blue transition-colors rounded-md text-center font-semibold px-2 py-2 align-middle"
                   href={`https://twitter.com/intent/tweet?text=Vem estudar ${
                     activeItem?.label
                   } comigo na Trilha Info.&url=https://trilha.info/roadmap/${

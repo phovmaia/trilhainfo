@@ -1,6 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import {
-  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -8,10 +7,8 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-  Input,
   useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
 import { FaDiscord, FaGithubSquare, FaNewspaper } from "react-icons/fa";
 import { ThreeDots } from "react-loader-spinner";
 
@@ -23,14 +20,13 @@ export default function MobileMenu() {
     isAuthenticated,
     isLoading,
     logout,
-    loginWithPopup,
   } = useAuth0();
   return (
-    <>
+    <div className="flex md:hidden justify-center items-center">
       <div className="space-y-2 m-auto block md:hidden" onClick={onOpen}>
-        <div className="w-8 h-0.5 bg-yellow"></div>
-        <div className="w-8 h-0.5 bg-yellow"></div>
-        <div className="w-8 h-0.5 bg-yellow"></div>
+        <div className="w-8 h-0.5 bg-light-yellow"></div>
+        <div className="w-8 h-0.5 bg-light-yellow"></div>
+        <div className="w-8 h-0.5 bg-light-yellow"></div>
       </div>
 
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
@@ -46,7 +42,7 @@ export default function MobileMenu() {
                     src={user?.picture}
                     alt={user?.name}
                   />
-                  <span className="m-auto ml-2 mr-4 text-base txt-title">
+                  <span className="m-auto ml-2 mr-4 text-base font-title">
                     {user?.name}
                   </span>
                 </div>
@@ -64,7 +60,7 @@ export default function MobileMenu() {
                   href="https://discord.gg/TmneeHgTBp"
                 >
                   <FaDiscord className="m-auto w-7 h-7 " />
-                  <span className="my-auto text-base ml-1 txt-title">
+                  <span className="my-auto text-base ml-1 font-title">
                     Discord
                   </span>
                 </a>
@@ -76,7 +72,7 @@ export default function MobileMenu() {
                   href="https://github.com/flaviojmendes/trilhadev"
                 >
                   <FaGithubSquare className="m-auto w-8 h-8 " />
-                  <span className="my-auto text-lg ml-1 txt-title">Github</span>
+                  <span className="my-auto text-lg ml-1 font-title">Github</span>
                 </a>
               </li>
               <li className="flex">
@@ -86,7 +82,7 @@ export default function MobileMenu() {
                   href="https://www.getrevue.co/profile/flaviojmendes"
                 >
                   <FaNewspaper className="m-auto w-8 h-8 " />
-                  <span className="my-auto text-lg ml-1 txt-title">
+                  <span className="my-auto text-lg ml-1 font-title">
                     Assine a Newsletter
                   </span>
                 </a>
@@ -94,24 +90,23 @@ export default function MobileMenu() {
 
               <li className="flex">
                 {isAuthenticated && (
-                  <Button
-                    margin={"auto"}
-                    mt={8}
+                  <button
+                    className="auto p-2 rounded-md m-auto mt-8 bg-brown"
+                    
                     onClick={() => logout({ returnTo: window.location.origin })}
                   >
                     Logout
-                  </Button>
+                  </button>
                 )}
               </li>
               <li className="flex">
                 {!isAuthenticated && !isLoading && (
-                  <Button
-                    margin={"auto"}
-                    mt={8}
+                  <button
+                    className="m-auto mt-8 bg-light-brown p-2 rounded-md"
                     onClick={() => loginWithRedirect()}
                   >
                     Log In
-                  </Button>
+                  </button>
                 )}
                 {isLoading && (
                   <ThreeDots
@@ -131,6 +126,6 @@ export default function MobileMenu() {
           <DrawerFooter></DrawerFooter>
         </DrawerContent>
       </Drawer>
-    </>
+    </div>
   );
 }

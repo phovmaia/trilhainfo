@@ -8,14 +8,14 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 
-import { ChangeEvent, SetStateAction, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import MainLayout from "../components/layouts/MainLayout";
 import { RoadmapModel } from "../entity/RoadmapModel";
 import Cookies from "universal-cookie";
 import { useNavigate, useParams } from "react-router-dom";
 import { Grid } from "react-loader-spinner";
-import NewRoadmapPreview from "../components/NewRoadmap/NewRoadmapPreview/NewRoadmapPreview";
-import NewRoadmapEditor from "../components/NewRoadmap/NewRoadmapEditor/NewRoadmapEditor";
+import NewRoadmapPreview from "../components/NewRoadmap/NewRoadmapPreview";
+import NewRoadmapEditor from "../components/NewRoadmap/NewRoadmapEditor";
 
 const cookies = new Cookies();
 
@@ -111,10 +111,10 @@ export default function NewRoadmapPage() {
             <InputGroup>
               <InputLeftAddon
                 children="trilha.info/roadmap/v/"
-                className="bg-yellow"
+                className="bg-light-yellow"
               />
               <Input
-                className="c-yellow txt-title"
+                className="c-yellow font-title"
                 fontSize={"md"}
                 value={roadmap.slug}
                 onChange={handleSlugChange}
@@ -123,7 +123,7 @@ export default function NewRoadmapPage() {
               />
             </InputGroup>
             {invalidSlug && (
-              <p className="text-center mt-1 txt-title text-red">
+              <p className="text-center mt-1 font-title text-red">
                 Desculpe, mas essa URL já foi escolhida por outra pessoa.. 😔
               </p>
             )}
@@ -131,7 +131,7 @@ export default function NewRoadmapPage() {
           <div className="w-full md:w-1/2 m-auto">
             <span className="c-yellow">Título:</span>
             <Input
-              className="c-yellow font-semibold txt-title"
+              className="c-yellow font-semibold font-title"
               fontSize={"xl"}
               value={roadmap.title}
               onChange={handleTitleChange}
